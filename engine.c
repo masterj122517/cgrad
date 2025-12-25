@@ -257,3 +257,13 @@ Value* valueScalarTruediv(double a, Value* b)
 
   return out;
 }
+
+void free_value(Value* v)
+{
+  if (!v)
+    return;
+  if (v->children != NULL) {
+    free(v->children);
+  }
+  free(v);
+}

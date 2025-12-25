@@ -43,4 +43,6 @@ Value* valueTruedivScalar(Value* a, double b);
 Value* valueScalarTruediv(double b, Value* a);
 void backward(Value* root);
 
+void free_value(Value* v);
+
 #endif
