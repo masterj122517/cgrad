@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror
-TARGET = bin/cgrad 
-SRCS = engine.c main.c
+TARGET = bin/cgrad
+SRCS = engine.c nn.c 
 OBJS = $(SRCS:%.c=bin/%.o)
 
 all: $(TARGET)
