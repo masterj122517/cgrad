@@ -1,5 +1,5 @@
 #define CGRAD_IMPLEMENTATION
-#include "cgrad.h"
+#include "../cgrad.h"
 #include <time.h>
 
 // MNIST IDX file loader

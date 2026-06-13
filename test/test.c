@@ -1,5 +1,5 @@
 #define CGRAD_IMPLEMENTATION
-#include "cgrad.h"
+#include "../cgrad.h"
 #include <math.h>
 
 static int tests_run = 0;
