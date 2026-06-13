@@ -1,6 +1,6 @@
 # cgrad — a tiny autograd engine in C
 
-> *"What if PyTorch, but make it C — and you can read the whole thing in 10 minutes?"*
+> *"What if Micrograd, but make it C — and you can read the whole thing in 10 minutes?" (and we have tensors!!!!)* 
 
 **cgrad** is a single-header  tensor autograd library. It does reverse-mode automatic differentiation, element-wise ops, matrix multiply, ReLU, softmax cross-entropy — the whole gradient descent stack — in pure C. No dependencies beyond `libc` and `libm`.
 
