@@ -1,0 +1,10 @@
+[
+  {
+    "file": "test.c",
+    "arguments": [
+      "/usr/bin/gcc",
+      "test.c"
+    ],
+    "directory": "/Users/masterj/programming/cgrad"
+  }
+]
