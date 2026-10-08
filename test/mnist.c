@@ -108,7 +108,7 @@ int main()
   const int EPOCHS = 5;
   const float LEARNING_RATE = 0.01f;
   // 设为 0 表示用全部数据；设为较小值可以快速测试
-    const int MAX_TRAIN = 0;
+  const int MAX_TRAIN = 0;
 
   // 加载数据
   printf("Loading MNIST data...\n");

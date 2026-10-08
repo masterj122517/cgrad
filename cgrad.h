@@ -11,10 +11,8 @@
 
 typedef struct Tensor Tensor;
 
-// 创建
 Tensor* cg_tensor(float* data, int* shape, int ndim);
 
-// 运算
 Tensor* cg_add(Tensor* a, Tensor* b);
 Tensor* cg_matmul(Tensor* a, Tensor* b);
 Tensor* cg_sum(Tensor* a);
@@ -25,14 +23,12 @@ Tensor* cg_zeros(int* shape, int ndim);
 void cg_sgd_step(Tensor* t, float lr);
 void cg_zero_grad(Tensor* t);
 
-// 反向传播
 void cg_backward(Tensor* t);
 
-// 工具
 void cg_print(Tensor* t);
 void cg_free(Tensor* t);
 
-// internal — 不给用户用，但需要 forward declare
+// internal
 void backward_add(Tensor* t);
 void backward_matmul(Tensor* t);
 void backward_sum(Tensor* t);
@@ -50,7 +46,7 @@ struct Tensor
   float* grad;
   int* shape;
   int ndim;
-  // backward函数指针
+  // backward function pointer
   void (*_backward)(struct Tensor*);
   struct Tensor* children[2];
 };
@@ -182,7 +178,7 @@ void build_topo(Tensor* node, TensorVec* topo, TensorVec* visited)
 
 void cg_backward(Tensor* t)
 {
-  // 只能对标量调用
+  // you only use this to a scalar
   assert(t->ndim == 1 && t->shape[0] == 1);
 
   TensorVec topo = vec_new(8);
@@ -194,7 +190,7 @@ void cg_backward(Tensor* t)
   // back the dL/dL = 1 where the chain rule starts
   t->grad[0] = 1.0f;
 
-  // 反向调用topo，传播梯度
+  // call the reverse topo，pass the gradiant
   for (int i = topo.size - 1; i >= 0; i--) {
     if (topo.data[i]->_backward)
       topo.data[i]->_backward(topo.data[i]);
@@ -471,7 +467,6 @@ void cg_zero_grad(Tensor* t)
   memset(t->grad, 0, size * sizeof(float));
 }
 
-// 实现
 Tensor* cg_zeros(int* shape, int ndim)
 {
   int size = 1;
